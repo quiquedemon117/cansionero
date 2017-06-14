@@ -32,13 +32,13 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mas... <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
+                <li><a href="#">Editar Cantos</a></li>
+                <li><a href="#">Eliminar Cantos</a></li>
+                <li><a href="#">Subir Audios de cantos</a></li>
                 <li role="separator" class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
-                <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li>
+                <li class="dropdown-header">Tambien puedes:</li>
+                <li><a href="#">Ver Esquema rapido</a></li>
+                <li><a href="#">Ver Biblioteca de Esquemas</a></li>
               </ul>
             </li>
           </ul>
@@ -72,9 +72,9 @@ if($buscar == "*"){
 
 if ($row = mysqli_fetch_array($sql)){ 
    echo "<table class='table' border = '1'> \n"; 
-   echo "<tr><th>Nombre</th><th>Tipo</th><th>Tiempo</th><th>Letra</th></tr> \n"; 
+   echo "<tr><th>Nombre</th><th>Tipo</th><th>Tiempo</th><th>Letra</th><th></th></tr> \n"; 
    do { 
-      echo "<tr><td>".$row["nombre"]."</td><td>".$row["tipo"]."</td><td>".$row["tiempo_liturgico"]."</td><td><a href='canto.php?canto=".$row['id_canto']."'>Ver letra del canto</a></td></tr> \n"; 
+      echo "<tr><td>".$row["nombre"]."</td><td>".$row["tipo"]."</td><td>".$row["tiempo_liturgico"]."</td><td><a href='canto.php?canto=".$row['id_canto']."'>Ver letra del canto</a></td><td><a href='#'>Agregar a Esquema rapido</a></td></tr> \n"; 
    } while ($row = mysqli_fetch_array($sql)); 
    echo "</table> \n"; 
 } else { 
