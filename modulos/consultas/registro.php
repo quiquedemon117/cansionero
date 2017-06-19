@@ -1,12 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="../../sweetalert/dist/sweetalert.css">
+<script type="text/javascript" src="../../sweetalert/dist/sweetalert.min.js"></script>
+</head>
+</html>
 <?php
-if(isset($_GET["nombre"]) && isset($_GET["tipo"]) && isset($_GET["tiempo"]) && isset($_GET["letra"])){
+if(isset($_POST["nombre"]) && isset($_POST["tipo"]) && isset($_POST["tiempo"]) && isset($_POST["letra"])){
 include_once('../conexion/conexion.php');
 session_start();
 
-	$nombrePOST = $_GET["nombre"];
-	$tipoPOST = $_GET["tipo"];
-	$tiempoPOST = $_GET["tiempo"];
-	$letraPOST = $_GET["letra"];
+	$nombrePOST = $_POST["nombre"];
+	$tipoPOST = $_POST["tipo"];
+	$tiempoPOST = $_POST["tiempo"];
+	$letraPOST = $_POST["letra"];
 
 
 //Escribimos la consulta necesaria
@@ -24,9 +31,9 @@ if($nombrePOST == $BD){
 	$consultaRegistro = "INSERT INTO cantos (nombre, tipo, tiempo_liturgico, letra_canto) VALUES ('$nombrePOST', '$tipoPOST', '$tiempoPOST', '$letraPOST')";
 
 	if(mysqli_query($con, $consultaRegistro)){
-		die('<script>alert("El canto fue registrado correctamente"); window.location.href="../../index.html";</script>');
+		die("<script>swal({title:'Agregado', text:'El canto a sido registrado correctamente', type:'success'}, function(){window.location.href='../../index.html'});</script>");
 	}else{
-		die('<script>alert("Ha ocurrido un error por favor intente de nuevo"); window.location.href="../../index.html";</script>');
+		die("<script>swal({title:'Oops', text:'Ocurrio un problema intente mas tarde', type:'error'}, function(){window.location.href='../../index.html'});</script>");
 	}
 }
 }else{

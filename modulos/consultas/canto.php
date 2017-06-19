@@ -1,6 +1,7 @@
 <?php 
 include_once('../conexion/conexion.php');
-$sqls=mysqli_query($con, "SELECT nombre FROM cantos");
+$canto_GET = $_GET['canto'];
+$sqls=mysqli_query($con, "SELECT nombre FROM cantos WHERE id_canto='".$canto_GET."'");
 $row = mysqli_fetch_array($sqls)
 ?>
 <!DOCTYPE html>
@@ -22,7 +23,6 @@ $row = mysqli_fetch_array($sqls)
 	<div class='divcustom col-md-offset-3 col-md-6'>
 <?php
 
-$canto_GET = $_GET['canto'];
 $sql=mysqli_query($con, "SELECT letra_canto FROM cantos WHERE id_canto='$canto_GET'");
 
 if ($row = mysqli_fetch_array($sql)){ 
@@ -33,8 +33,6 @@ if ($row = mysqli_fetch_array($sql)){
 } else { 
 echo "¡ No se ha encontrado ningún registro !"; 
 } 
-
-
 ?>
 	</div>
 </body>
