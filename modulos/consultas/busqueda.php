@@ -5,6 +5,7 @@
 	<title>Busqueda</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="../../images/favicon.png">
 	<link rel="stylesheet" href="../../css/bootstrap.css">
 	<link rel="stylesheet" href="../../css/bootstrap-theme.css">
 	<link rel="stylesheet" href="../../css/style.css">
@@ -12,12 +13,6 @@
 	<script src="../../js/jquery-3.2.1.min.js"></script>
 	<script src="../../js/bootstrap.js"></script>
   <script type="text/javascript" src="../../sweetalert/dist/sweetalert.min.js"></script>
-  <script type="text/javascript">
-    function sweet(){
-      swal("Buen trabajo", "El canto se agrego a tu esquema rapido", "success");
-      return false;
-    }
-  </script>
 </head>
 <body>
 	<div class="container">
@@ -42,7 +37,7 @@
               <ul class="dropdown-menu">
                 <li><a href="../consultas/editar.php">Editar Cantos</a></li>
                 <li><a href="../consultas/eliminar.php">Eliminar Cantos</a></li>
-                <li><a href="#">Subir Audios de cantos</a></li>
+                <li><a href="../upload/music.php">Subir Audios de cantos</a></li>
                 <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Tambien puedes:</li>
                 <li><a href="#">Ver Esquema rapido</a></li>
@@ -79,16 +74,15 @@ if($buscar == "*"){
 }
 
 if ($row = mysqli_fetch_array($sql)){ 
-   echo "<table class='table' border = '1'> \n"; 
+   echo "<form method='post' action='../esquema/esquema.php'><table class='table' border = '1'> \n"; 
    echo "<tr><th>Nombre</th><th>Tipo</th><th>Tiempo</th><th>Letra</th><th></th></tr> \n"; 
    do { 
-      echo "<tr><td>".$row["nombre"]."</td><td>".$row["tipo"]."</td><td>".$row["tiempo_liturgico"]."</td><td><a href='canto.php?canto=".$row['id_canto']."'>Ver letra del canto</a></td><td><a href='#' onclick='sweet();'>Agregar a Esquema rapido</a></td></tr> \n"; 
+      echo "<tr><td>".$id=$row["nombre"]."</td><td>".$row["tipo"]."</td><td>".$row["tiempo_liturgico"]."</td><td><a href='canto.php?canto=".$row['id_canto']."'>Ver letra del canto</a></td><td><input type='submit' class='btn btn-xs btn-link' value='Agregar a esquema rapido'></td></tr> \n"; 
    } while ($row = mysqli_fetch_array($sql)); 
-   echo "</table> \n"; 
+   echo "</table></form> \n"; 
 } else { 
 echo "<h3>¡ No se ha encontrado ningún registro !</h3>"; 
 } 
-
 ?>
 		</div></center>
 </body>

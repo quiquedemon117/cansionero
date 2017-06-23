@@ -1,8 +1,26 @@
+<?php
+session_start();	 
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {	 
+} else {
+	   echo "Esta pagina es solo para usuarios registrados.<br>";
+	   echo "<br><a href='../usuario/login.php'>Login</a>";
+exit;
+	}
+$now = time(); 
+	if($now > $_SESSION['expire']) {
+	session_destroy(); 
+	echo "Su sesion a terminado,
+	<a href='../usuario/login.php'>Necesita Hacer Login</a>";
+exit;
+}
+	?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
 	<title></title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/png" href="../../images/favicon.png">
 	<link rel="stylesheet" href="../../css/bootstrap.css">
 	<link rel="stylesheet" href="../../css/bootstrap-theme.css">
 	<link rel="stylesheet" href="../../css/style.css">
@@ -10,6 +28,7 @@
 	<script src="../../js/bootstrap.js"></script>
 </head>
 <body>
+<a href="../usuario/logout.php"><button class="btn btn-danger" style="float:right;">Cerrar sesion</button></a>
 <h1>Editar los cantos</h1>
 	<form action="editar.php" type="POST" class="form-group">
 		<?php

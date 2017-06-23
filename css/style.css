@@ -25,7 +25,7 @@ tr:hover td { background: #d0dafd; color: #339; }
 
 .divcustom{
 	width:50%;
-	background-color: rgba(250, 244, 227, 0.5);
+	background-color: rgba(250, 244, 227, 0.8);
 	border-radius: 15px;
 	text-align: center;
 }
@@ -174,4 +174,15 @@ line height is 20px by default so add 30px top and bottom to equal the new .navb
 	z-index: 9999;
 }
 
+label::selection {
+    background: green;
+    color: black;
+    text-shadow: 1px 1px #fff;
+}
 
+/* Firefox */
+label, h1, h3::-moz-selection {
+    background: green;
+    color: black;
+    text-shadow: 1px 1px #fff;
+}
